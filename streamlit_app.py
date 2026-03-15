@@ -45,7 +45,7 @@ if ingredients_list:
         fruity_vice_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)  
         #st.text(smoothiefroot_response.json())
         st_df = st.dataframe(data=fruity_vice_response.json(), use_container_width=True)
-        st.dataframe(data=st_df, use_container_width=True)
+       
         #st.write(ingredients_string)
         
 
