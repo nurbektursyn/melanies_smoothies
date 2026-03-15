@@ -21,7 +21,7 @@ session = cnx.session()
 name_on_order = st.text_input("Name on Smoothie")
 st.write("The name on your smoothie will be:", name_on_order)
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 pd_df = my_dataframe.to_pandas()
 st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
@@ -42,9 +42,10 @@ if ingredients_list:
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         
         st.subheader(fruit_chosen + ' Nutrition Information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/{search_on}")  
+        fruity_vice_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)  
         #st.text(smoothiefroot_response.json())
-        st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        st_df = st.dataframe(data=fruity_vice_response.json(), use_container_width=True)
+        st.dataframe(data=st_df, use_container_width=True)
         #st.write(ingredients_string)
         
 
